@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trần Nhựt Anh | Software Engineer Portfolio</title>
+  <title>Tran Nhut Anh | Software Engineer Portfolio</title>
   
-  <!-- Meta SEO -->
-  <meta name="description" content="Hồ sơ năng lực của Trần Nhựt Anh - Sinh viên năm cuối CNTT Đại học Nông Lâm TP.HCM. Chuyên sâu Spring Boot, Next.js, Microservices & Event-Driven Architecture.">
-  <meta name="keywords" content="Trần Nhựt Anh, Tran Nhut Anh, Portfolio, Software Engineer Intern, Backend Developer, Spring Boot, Microservices, NLU">
-  <meta name="author" content="Trần Nhựt Anh">
+  <meta name="description" content="Portfolio of Tran Nhut Anh - Senior IT Student at Ho Chi Minh City University of Agriculture and Forestry. Specialized in Spring Boot, Next.js, Microservices & Event-Driven Architecture.">
+  <meta name="keywords" content="Tran Nhut Anh, Portfolio, Software Engineer Intern, Backend Developer, Spring Boot, Microservices, NLU">
+  <meta name="author" content="Tran Nhut Anh">
   
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -21,14 +19,6 @@
             slate: {
               850: '#1b2330',
               950: '#020617',
-            },
-            synth: {
-              950: '#090115',
-              900: '#16022c',
-              850: '#230046',
-              800: '#340068',
-              700: '#5200a4',
-              400: '#d946ef',
             }
           },
           fontFamily: {
@@ -40,21 +30,16 @@
     }
   </script>
   
-  <!-- React & ReactDOM UMD CDNs (v18) -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   
-  <!-- Babel Standalone for in-browser JSX transpilation -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   
-  <!-- Premium Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <!-- Styles for smooth styling and fine-tuning -->
   <style type="text/css">
-    /* Custom scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -70,26 +55,6 @@
       background: #334155;
     }
 
-    /* Ambient Lights Animation */
-    @keyframes orbit-1 {
-      0% { transform: translate(0px, 0px) scale(1); }
-      50% { transform: translate(60px, -40px) scale(1.15); }
-      100% { transform: translate(0px, 0px) scale(1); }
-    }
-    @keyframes orbit-2 {
-      0% { transform: translate(0px, 0px) scale(1); }
-      50% { transform: translate(-60px, 40px) scale(1.1); }
-      100% { transform: translate(0px, 0px) scale(1); }
-    }
-    .animate-orbit-1 {
-      animation: orbit-1 15s ease-in-out infinite;
-    }
-    .animate-orbit-2 {
-      animation: orbit-2 18s ease-in-out infinite;
-      animation-delay: 2s;
-    }
-
-    /* Flow line dashes */
     @keyframes flow-line {
       0% { stroke-dashoffset: 100; }
       100% { stroke-dashoffset: 0; }
@@ -99,32 +64,19 @@
       animation: flow-line 2s linear infinite;
     }
 
-    /* Glassmorphism custom rules */
     .glass-panel {
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
-
-    /* Floating custom animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-    }
-    .animate-float {
-      animation: float 4s ease-in-out infinite;
-    }
   </style>
 </head>
-<body class="antialiased overflow-x-hidden transition-colors duration-500">
+<body class="antialiased overflow-x-hidden bg-slate-950 text-slate-100 transition-colors duration-500">
 
-  <!-- Root mount element for React -->
   <div id="root"></div>
 
-  <!-- React code starts here -->
   <script type="text/babel">
     const { useState, useEffect, useRef } = React;
 
-    // SVG Icons for maximum visual excellence without external font dependency
     const Icons = {
       Github: () => (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -160,43 +112,11 @@
           <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
         </svg>
       ),
-      Code: () => (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="16 18 22 12 16 6" />
-          <polyline points="8 6 2 12 8 18" />
-        </svg>
-      ),
-      Server: () => (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-          <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-          <line x1="6" y1="6" x2="6.01" y2="6" />
-          <line x1="6" y1="18" x2="6.01" y2="18" />
-        </svg>
-      ),
-      Database: () => (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <ellipse cx="12" cy="5" rx="9" ry="3" />
-          <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-          <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
-        </svg>
-      ),
       ExternalLink: () => (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
           <polyline points="15 3 21 3 21 9" />
           <line x1="10" y1="14" x2="21" y2="3" />
-        </svg>
-      ),
-      Terminal: () => (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="4 17 10 11 4 5" />
-          <line x1="12" y1="19" x2="20" y2="19" />
-        </svg>
-      ),
-      Sparkles: () => (
-        <svg className="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
         </svg>
       ),
       Language: () => (
@@ -211,7 +131,7 @@
         </svg>
       ),
       Check: () => (
-        <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 2.5 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 6 9 17 4 12" />
         </svg>
       ),
@@ -225,115 +145,95 @@
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
           <polyline points="14 2 14 8 20 8" />
         </svg>
-      ),
-      Sun: () => (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="1" x2="12" y2="3" />
-          <line x1="12" y1="21" x2="12" y2="23" />
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-          <line x1="1" y1="12" x2="3" y2="12" />
-          <line x1="21" y1="12" x2="23" y2="12" />
-          <line x1="4.22" y1="19.07" x2="5.64" y2="17.64" />
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        </svg>
-      ),
-      Moon: () => (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
       )
     };
 
-    // Constant Data Mapping
     const QUALIFICATIONS = {
       swe: {
         title: "Software Engineer Intern",
-        summary: "Thiết kế các giải pháp hệ thống bền vững, tích hợp công nghệ hiện đại ở cả frontend và backend.",
+        summary: "Designing sustainable system solutions, integrating modern technologies across full-stack ecosystems.",
         points: [
-          "Vận dụng kiến thức thuật toán, lập trình hướng đối tượng (OOP) và cơ sở dữ liệu quan hệ/phi quan hệ chặt chẽ.",
-          "Am hiểu phát triển ứng dụng phân tán, thiết kế RESTful APIs tối ưu và lập trình bất đồng bộ.",
-          "Tiếng Anh chuyên ngành xuất sắc (TOEIC 805) giúp nghiên cứu tài liệu kỹ thuật quốc tế và tích hợp nhanh.",
-          "Tư duy giải quyết vấn đề sáng tạo, tự học mạnh mẽ các công nghệ mới (Docker, Kafka, Kong API Gateway)."
+          "Strong foundation in data structures & algorithms, OOP, and relational/non-relational database design.",
+          "Proficient in distributed application development, RESTful API design, and asynchronous programming.",
+          "Excellent technical English (TOEIC 805) for reading documentation and seamless global integration.",
+          "Proactive self-learner picking up advanced tools quickly (Docker, Kafka, Kong API Gateway)."
         ],
         techs: ["Java", "Spring Boot", "Next.js", "MySQL", "Redis", "Docker", "Git"],
         file: "cv/Tran Nhut Anh_ Software Engineer Intern.pdf"
       },
       backend: {
         title: "Backend Developer",
-        summary: "Phát triển các kiến trúc backend quy mô lớn, an toàn dữ liệu, khả năng mở rộng mạnh mẽ.",
+        summary: "Developing scalable, secure backend architectures with strong data integrity.",
         points: [
-          "Xây dựng thành công hệ thống 6 microservices phân hợp lý với Spring Boot 3.",
-          "Bảo mật hệ thống chuyên sâu qua RS256 Asymmetric Key mã hóa và ký JWT, lưu blacklist trên Redis cache.",
-          "Thiết kế dòng chảy dữ liệu bất đồng bộ phi chặn (non-blocking) qua Apache Kafka Message Broker.",
-          "Thành thạo tối ưu hóa truy vấn SQL, cấu trúc phân tán MongoDB, caching đa cấp độ."
+          "Successfully built an architecture of 6 microservices partitioned by Domain-Driven Design (DDD).",
+          "Implemented secure authentication via RS256 Asymmetric Key JWT encryption with Redis token blacklist storage.",
+          "Designed non-blocking asynchronous data streams using Apache Kafka message broker.",
+          "Proficient in SQL query optimization, MongoDB distributed document structures, and multi-level caching."
         ],
         techs: ["Spring Boot 3", "Apache Kafka", "Redis", "MySQL", "MongoDB", "Kong Gateway", "Docker"],
         file: "cv/Tran-Nhut-Anh-TopCV.vn-170526.112055.pdf"
       },
       frontend: {
-        title: "Frontend Developer / Explorer",
-        summary: "Xây dựng trải nghiệm người dùng tối cao, hiệu năng vượt trội, giao diện mượt mà.",
+        title: "Frontend Explorer",
+        summary: "Crafting highly performant, accessible, and responsive client side applications.",
         points: [
-          "Tận dụng Next.js 15 (App Router) và React 18 thiết kế UI tương tác cao, bất đồng bộ hoàn chỉnh.",
-          "Tối ưu hóa tốc độ tải trang tăng 30% bằng cách giảm thiểu render dư thừa và quản lý state tinh gọn qua Redux.",
-          "Cấu hình Vite proxy thông minh giải quyết triệt để vấn đề chặn CORS trong phát triển dự án nhóm.",
-          "Khai phá và xây dựng bộ biên dịch XML/RSS phức tạp, xử lý dữ liệu động mượt mà."
+          "Utilized Next.js 15 (App Router) and React 18 for interactive, asynchronous modern UI development.",
+          "Boosted page performance by 30% via state optimization with Redux Toolkit and reducing redundant renders.",
+          "Configured proxy configurations in Vite to resolve cross-origin resource sharing (CORS) in agile team environments.",
+          "Explored and engineered a complex dynamic XML/RSS feed parser for smooth runtime data streaming."
         ],
-        techs: ["Next.js 15", "React 18", "TypeScript", "Redux Toolkit", "Tailwind CSS", "Vite", "Babel"],
+        techs: ["Next.js 15", "React 18", "TypeScript", "Redux Toolkit", "Tailwind CSS", "Vite"],
         file: "cv/Tran Nhut Anh Frontend developer.pdf"
       }
     };
 
     const SKILLS_DATA = {
       languages: [
-        { name: 'Java', level: '90%', use: 'Phát triển chính trong Spring Boot 3, xây dựng 6 microservices chịu tải cao với OOP vững vàng.', desc: 'Ngôn ngữ lập trình cốt lõi trong toàn bộ hệ thống backend doanh nghiệp cá nhân.' },
-        { name: 'TypeScript / JS', level: '85%', use: 'Xây dựng Next.js 15, tương tác luồng dữ liệu bất đồng bộ & type-safe.', desc: 'Công cụ đắc lực xây dựng giao diện động & runtime logic an toàn.' },
-        { name: 'SQL Query', level: '80%', use: 'Tối ưu chỉ mục (indexes), thiết lập ràng buộc dữ liệu toàn vẹn trong MySQL.', desc: 'Nền tảng thiết kế quan hệ bảng vững chắc.' },
-        { name: 'Python', level: '65%', use: 'Viết kịch bản tự động hóa dữ liệu, khai phá cơ bản mô hình AI (TensorFlow).', desc: 'Sử dụng cho scripting & nghiên cứu khoa học cơ bản.' }
+        { name: 'Java', use: 'Core language for enterprise systems, building multi-module microservices with clean OOP principles.', desc: 'Primary language for Spring Boot microservice architectures.' },
+        { name: 'TypeScript / JS', use: 'Building type-safe Next.js client-side infrastructures and asynchronous stream flows.', desc: 'Enables safe handling of production state and real-time interaction logic.' },
+        { name: 'SQL Query', use: 'Optimizing indexing strategies, normalization, and enforcing transactional ACID integrity inside MySQL.', desc: 'Foundation for building robust database schemas.' },
+        { name: 'Python', use: 'Scripting data automation pipelines and exploring baseline machine learning concepts (TensorFlow).', desc: 'Utilized for automated scripts and scientific research analysis.' }
       ],
       frameworks: [
-        { name: 'Spring Boot 3', level: '88%', use: 'Tích hợp Spring Security, Spring Data JPA, Eureka Service Discovery.', desc: 'Framework backend cốt lõi của dự án Furniro.' },
-        { name: 'Next.js 15 / React', level: '85%', use: 'Sử dụng App Router mới nhất, quản lý Client/Server Components.', desc: 'Giải pháp full-stack frontend tối ưu trải nghiệm và SEO.' },
-        { name: 'Redux Toolkit', level: '80%', use: 'Tạo luồng dữ liệu tập trung, quản lý giỏ hàng và session an toàn ở client.', desc: 'Quản trị state nâng cao cho SPA phức tạp.' },
-        { name: 'NestJS / Express', level: '70%', use: 'Thiết kế RESTful API nhỏ gọn, tích hợp TypeScript cấu trúc vững.', desc: 'Môi trường NodeJS runtime linh động.' }
+        { name: 'Spring Boot 3', use: 'Integrating Spring Security, Spring Data JPA, and Eureka Service Discovery protocols.', desc: 'Core backend engine powering production-ready web services.' },
+        { name: 'Next.js 15 / React', use: 'Leveraging React Server Components (RSC) and App Router configurations.', desc: 'Full-stack frontend framework optimized for both performance and SEO indexing.' },
+        { name: 'Redux Toolkit', use: 'Centralizing application state pipelines, managing secure user sessions and cart logic.', desc: 'Advanced state management tool built for complex SPAs.' },
+        { name: 'NestJS / Express', use: 'Designing modular, scalable backend REST APIs using Node.js runtime environments.', desc: 'Flexible scripting options for scalable, type-safe API architectures.' }
       ],
       middleware: [
-        { name: 'Apache Kafka', level: '85%', use: 'Sử dụng event-driven luồng đặt hàng. Đồng bộ hóa Inventory & Order.', desc: 'Message Broker bất đồng bộ giúp tách biệt các domain nghiệp vụ.' },
-        { name: 'Redis Cache', level: '80%', use: 'Blacklist các token JWT đã thu hồi, giảm 60% tải truy cập DB gốc.', desc: 'In-memory database tốc độ cao.' },
-        { name: 'MySQL / SQL Server', level: '80%', use: 'Thiết kế chuẩn hóa dữ liệu, giao dịch ACID an toàn tuyệt đối.', desc: 'Lưu trữ thông tin quan hệ cốt lõi.' },
-        { name: 'MongoDB', level: '75%', use: 'Thiết kế NoSQL lưu trữ logs giao dịch, dữ liệu biến động linh hoạt.', desc: 'Cơ sở dữ liệu dạng tài liệu phân tán.' }
+        { name: 'Apache Kafka', use: 'Event-driven message streams decoupling core Order and Inventory enterprise domains.', desc: 'High-throughput distributed event broker ensuring eventual consistency.' },
+        { name: 'Redis Cache', use: 'Storing revoked token blacklist structures, slashing database query latency by over 60%.', desc: 'In-memory key-value data structure store used for low-latency caching.' },
+        { name: 'MySQL / SQL Server', use: 'Designing relational database entities with transactional guarantees.', desc: 'Structured persistent tier handling core domain records.' },
+        { name: 'MongoDB', use: 'Architecting flexible document schema systems handling real-time logs and fluctuating event details.', desc: 'Distributed NoSQL engine optimized for rapid data expansion.' }
       ],
       devops: [
-        { name: 'Docker / Compose', level: '85%', use: 'Đóng gói 6 services backend cùng DB thành các container điều phối độc lập.', desc: 'Đồng bộ hóa môi trường Dev & Production.' },
-        { name: 'Kong API Gateway', level: '80%', use: 'Cấu hình routing tập trung, bảo vệ API, xử lý CORS & xác thực JWT.', desc: 'Tầng bảo mật và điều phối traffic biên.' },
-        { name: 'Git / GitHub Flow', level: '85%', use: 'Quản trị dự án qua GitHub Project, phân nhánh Git Flow tiêu chuẩn.', desc: 'Kiểm soát phiên bản và làm việc nhóm Agile.' },
-        { name: 'Maven', level: '80%', use: 'Cấu hình đa module (multi-module) cho các microservice backend.', desc: 'Trình quản lý dependencies mạnh mẽ của hệ sinh thái Java.' }
+        { name: 'Docker / Compose', use: 'Containerizing 6 modular services and dependencies for environment isolation.', desc: 'Standardizes environments from local development to cloud production stages.' },
+        { name: 'Kong API Gateway', use: 'Centralizing route definitions, authentication middleware hooks, and managing custom CORS parameters.', desc: 'Edge proxy system processing traffic flow control and security rules.' },
+        { name: 'Git / GitHub Flow', use: 'Managing project roadmaps via GitHub Projects utilizing Git Flow branch standards.', desc: 'Version control infrastructure optimized for modern agile environments.' },
+        { name: 'Maven', use: 'Structuring clean multi-module project trees controlling distributed microservice architectures.', desc: 'Dependency manager handling complex build cycles.' }
       ]
     };
 
     const FILE_CONTENTS = {
       'welcome.sh': `#!/bin/bash
-# Chào mừng bạn đến với IDE của Trần Nhựt Anh!
+# Welcome to Tran Nhut Anh's Interactive Portfolio Workspace!
 echo "--------------------------------------------------------"
-echo "  👨‍💻 TRẦN NHỰT ANH - SOFTWARE ENGINEER PORTFOLIO v2.0"
-echo "  🏢 ĐẠI HỌC NÔNG LÂM TP.HCM (2022 - 2026)"
+echo "  👨‍💻 TRAN NHUT ANH - SOFTWARE ENGINEER PORTFOLIO"
+echo "  🏢 HO CHI MINH CITY UNIVERSITY OF AGRICULTURE & FORESTRY"
 echo "  📧 nhutanhtran806@gmail.com | 📞 0387822490"
 echo "--------------------------------------------------------"
-echo "Các lệnh khả dụng: help, about, skills, projects, contact"
-echo "Mẹo: Bạn có thể click trực tiếp các file bên trái để xem nhanh!"
+echo "Available commands: help, about, skills, projects, contact"
+echo "Tip: You can also click files directly in the left sidebar explorer."
 `,
-      'about_me.md': `# Về Tôi (About Trần Nhựt Anh)
+      'about_me.md': `# About Tran Nhut Anh
 
-- **Họ tên**: Trần Nhựt Anh
-- **Học vấn**: Đại học Nông Lâm TP.HCM (2022 - 2026) - Ngành CNTT
+- **Education**: Senior IT Student at NLU (2022 - 2026)
 - **GPA**: 3.0 / 4.0
-- **Ngoại ngữ**: TOEIC 805 (Giao tiếp tốt, nghiên cứu tài liệu kỹ thuật trôi chảy)
-- **NCKH**: Giải Khuyến khích Nghiên cứu Khoa học Sáng tạo cấp trường 2024
+- **Languages**: English TOEIC 805 (Fluent documentation reading & tech discussion)
+- **Awards**: Consolation Prize in University Scientific Research Innovation 2024
 
-## Định hướng sự nghiệp:
-Trở thành một **Software Engineer toàn năng**, chuyên sâu thiết kế hệ thống phân tán chịu tải cao (Backend) kết hợp tối ưu giao diện người dùng (Frontend). Luôn theo đuổi nguyên tắc "Clean Code" và hiệu năng hệ thống vượt trội.
+## Career Objective:
+To become a versatile **Software Engineer** specializing in distributed microservices architectures (Backend) coupled with optimized web systems (Frontend). Highly committed to writing Clean Code and driving systems efficiency.
 `,
       'skills.json': `{
   "technical_skills": {
@@ -345,62 +245,51 @@ Trở thành một **Software Engineer toàn năng**, chuyên sâu thiết kế 
     "devops_tools": ["Docker", "Docker Compose", "Kong API Gateway", "Maven", "Git"]
   },
   "soft_skills": [
-    "Khả năng tự học công nghệ mới cực nhanh",
-    "Tư duy giải quyết vấn đề có cấu trúc",
-    "Quản trị dự án Agile / Scrum Lead",
-    "Giao tiếp nhóm & hỗ trợ đồng đội tốt"
+    "Rapid technical self-learning ability",
+    "Structured engineering problem solving",
+    "Agile / Scrum framework management",
+    "Collaborative and direct communication"
   ]
 }`,
-      'furniro_architecture.txt': `=== KIẾN TRÚC HỆ THỐNG FURNIRO E-COMMERCE (EVENT-DRIVEN) ===
+      'furniro_architecture.txt': `=== FURNIRO E-COMMERCE EVENT-DRIVEN ARCHITECTURE ===
 
-Dự án sử dụng mô hình Microservices phân tách theo Domain-Driven Design (DDD).
+System follows distributed Microservices architecture patterns separated by Domain-Driven Design (DDD).
 
-TỔNG QUAN LUỒNG ĐI DỮ LIỆU:
-1. Client (Next.js 15) gửi yêu cầu đặt hàng qua API Gateway.
-2. Kong API Gateway phân tuyến & kiểm tra tính toàn vẹn của request.
-3. Auth Service xác thực chữ ký JWT bằng thuật toán bất đối xứng RS256. Đồng thời kiểm tra Token Blacklist trong Redis Cache.
-4. Request hợp lệ được gửi tới Order Service. Order Service lưu đơn hàng tạm thời (PENDING) vào cơ sở dữ liệu MySQL.
-5. Order Service phát tán Event "order.created" lên Apache Kafka Broker.
-6. Inventory Service lắng nghe Event trên, lập tức khóa tạm thời số lượng sản phẩm (Reserve Inventory) trong kho.
-7. Khi Inventory hoàn tất giữ hàng, hệ thống đồng bộ và trả về kết quả THÀNH CÔNG cho khách hàng.
-
-=> Kiến trúc đảm bảo tính nhất quán cuối cùng (Eventual Consistency) và chịu tải cực tốt!
+TRANSACTION STREAM FLOW:
+1. Client (Next.js 15) submits a checkout event through the gateway.
+2. Kong API Gateway parses and filters the incoming request payload.
+3. Auth Service verifies the Asymmetric Key RS256 signature and checks Redis to verify if the token is blacklisted.
+4. Valid requests transition to the Order Service, inserting a PENDING record into the MySQL engine.
+5. Order Service dispatches an 'order.created' event to the Apache Kafka Broker.
+6. Inventory Service consumes the event message, locking stock volumes immediately (Reserve Inventory pattern).
+7. Once committed, eventual consistency aligns across systems and returns a SUCCESS message to the client terminal.
 `,
-      'contact.txt': `=== THÔNG TIN LIÊN LẠC (CONTACT DETAILS) ===
+      'contact.txt': `=== CONTACT INFORMATION ===
 
-Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các kênh sau:
+Feel free to reach out via the following communication channels:
 
-- 📱 Điện thoại : 0387822490
-- ✉️ Email     : nhutanhtran806@gmail.com
-- 📍 Địa chỉ   : Thủ Đức, TP. Hồ Chí Minh
-- 🐙 GitHub    : https://github.com/NaGit09
+- 📱 Phone   : 0387822490
+- ✉️ Email   : nhutanhtran806@gmail.com
+- 📍 Location: Thu Duc, Ho Chi Minh City, Vietnam
+- 🐙 GitHub  : https://github.com/NaGit09
 
-* Sẵn sàng tham gia thực tập (Software Engineer / Backend Developer) ngay lập tức!
+* Ready to join immediately for Software Engineer / Backend Developer opportunities!
 `
     };
 
     function App() {
-      // Theme state
-      const [theme, setTheme] = useState('ocean'); // 'ocean' (Teal/Cyan) or 'synth' (Fuchsia/Purple)
-
-      // Active Section Navigation
       const [activeNav, setActiveNav] = useState('about');
-      
-      // Skill Tabs & Detailed Overlay
       const [skillTab, setSkillTab] = useState('languages');
       const [selectedDetailSkill, setSelectedDetailSkill] = useState(null);
 
-      // Typing Effect State
       const [typedText, setTypedText] = useState('');
       const roles = ['Software Engineer Intern', 'Backend Developer', 'Full Stack Explorer', 'Distributed Systems Enthusiast'];
       const [roleIndex, setRoleIndex] = useState(0);
       const [charIndex, setCharIndex] = useState(0);
       const [isDeleting, setIsDeleting] = useState(false);
 
-      // CV Center State
       const [selectedCVRole, setSelectedCVRole] = useState('swe');
 
-      // Microservice Simulator State
       const [simStep, setSimStep] = useState(null);
       const [isSimulating, setIsSimulating] = useState(false);
       const [simLog, setSimLog] = useState([]);
@@ -413,27 +302,24 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
         inventory: { status: 'STANDBY', cpu: '0%', mem: '122MB' }
       });
 
-      // VS Code IDE State
       const [openFiles, setOpenFiles] = useState(['welcome.sh']);
       const [activeFile, setActiveFile] = useState('welcome.sh');
       const [terminalInput, setTerminalInput] = useState('');
       const [terminalHistory, setTerminalHistory] = useState([
         { type: 'input', text: 'welcome' },
-        { type: 'output', text: 'Chào mừng bạn đến với Terminal IDE của Trần Nhựt Anh.\nGõ "help" hoặc click trực tiếp vào file ở Sidebar để bắt đầu tra cứu.' }
+        { type: 'output', text: 'Welcome to Tran Nhut Anh\'s custom terminal workspace emulator.\nType "help" or click any sidebar file asset to initiate lookup trees.' }
       ]);
       const terminalBottomRef = useRef(null);
 
-      // Contact Form State
       const [formData, setFormData] = useState({ name: '', email: '', message: '' });
       const [formSubmitted, setFormSubmitted] = useState(false);
 
-      // Typing effect runner
       useEffect(() => {
         const activeRole = roles[roleIndex];
         let typingSpeed = isDeleting ? 30 : 80;
 
         if (!isDeleting && charIndex === activeRole.length) {
-          typingSpeed = 2200; // Hold full role text
+          typingSpeed = 2200;
           setIsDeleting(true);
         } else if (isDeleting && charIndex === 0) {
           setIsDeleting(false);
@@ -453,24 +339,20 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
         return () => clearTimeout(timer);
       }, [charIndex, isDeleting, roleIndex]);
 
-      // Scroll terminal to bottom
       useEffect(() => {
         if (terminalBottomRef.current) {
           terminalBottomRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, [terminalHistory]);
 
-      // IDE file click handler
       const handleFileClick = (filename) => {
         if (!openFiles.includes(filename)) {
           setOpenFiles([...openFiles, filename]);
         }
         setActiveFile(filename);
-        // Sync terminal command
         executeTerminalCommand(`cat ${filename}`);
       };
 
-      // Close IDE file tab
       const handleCloseFile = (e, filename) => {
         e.stopPropagation();
         const updatedFiles = openFiles.filter(f => f !== filename);
@@ -480,7 +362,6 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
         }
       };
 
-      // Execute Terminal Shell Emulator Commands
       const executeTerminalCommand = (rawCmd) => {
         const cmd = rawCmd.trim();
         if (!cmd) return;
@@ -494,56 +375,55 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
 
         switch (mainCommand) {
           case 'help':
-            response = `Các lệnh hệ thống khả dụng:
-- about                 : Xem chi tiết thông tin ứng viên
-- skills                : Khám phá hệ sinh thái công nghệ sử dụng
-- projects              : Danh mục dự án thiết kế phân tán
-- contact               : Kênh liên lạc trực tiếp của Trần Nhựt Anh
-- cat <file_name>       : Đọc nội dung file cụ thể (Ví dụ: cat skills.json)
-- clear                 : Xóa lịch sử terminal`;
+            response = `Available terminal operations:
+- about                 : Review engineer summary records
+- skills                : Print complete tech ecosystem parameters
+- projects              : Display architecture design portfolios
+- contact               : Print reachability channels
+- cat <file_name>       : Render precise contents of file (e.g., cat skills.json)
+- clear                 : Flush console workspace histories`;
             break;
           case 'about':
-            response = `TRẦN NHỰT ANH - Software Engineer / Backend Developer Intern
-- GPA: 3.0/4.0 | NCKH Giải Khuyến Khích 2024.
-- TOEIC: 805.
-- Trường: Đại học Nông Lâm TP.HCM (2022 - 2026).
-- Sẵn sàng làm việc Full-time / Part-time ngay lập tức.`;
+            response = `TRAN NHUT ANH - Software Engineer / Backend Developer Intern
+- GPA: 3.0/4.0 | Undergrad Research Award 2024.
+- English Proficiency: TOEIC 805.
+- Ho Chi Minh City University of Agriculture & Forestry (2022 - 2026).
+- Full-time capability available immediately.`;
             break;
           case 'skills':
-            response = `SKILLS SUMMARY:
+            response = `ENGINEERING SKILLS MATRIX:
 - Languages   : Java, TypeScript, JavaScript, SQL, Python
 - Backend     : Spring Boot 3, NestJS, Node.js, Express
-- Frontend    : Next.js 15, React 18, Redux, Tailwind
+- Frontend    : Next.js 15, React 18, Redux, Tailwind CSS
 - Middleware  : Apache Kafka, Redis, Kong Gateway
-- Database    : MySQL, SQL Server, MongoDB, Cache
-- DevOps      : Docker, Compose, Maven, Git workflow`;
+- Database    : MySQL, SQL Server, MongoDB
+- DevOps      : Docker, Compose, Maven, Git Workflow`;
             break;
           case 'projects':
-            response = `DỰ ÁN ĐÃ THỰC HIỆN:
-1. Furniro (Event-Driven Microservices):
-   -> Hệ thống phân tán 6 services. Xác thực RS256 JWT, message broker Apache Kafka, Redis cache, Kong Gateway biên.
-2. News24h (Frontend E-News App):
-   -> React, Redux Toolkit, Tailwind. Tích hợp bộ parsing XML/RSS nâng cao, giải quyết CORS, tăng 30% tốc độ render.`;
+            response = `PORTFOLIO PRODUCTION RECORDS:
+1. Furniro (Event-Driven Microservices Suite):
+   -> Distributing 6 custom container modules. Integrated RS256 JWT, Apache Kafka messaging system, Redis caches, and Kong Gateway edge proxies.
+2. News24h (Frontend Web Suite):
+   -> Built using React, Redux Toolkit, and Tailwind CSS. Patched XML/RSS parsing modules bypassing local CORS limitations; boosted client load speeds by 30%.`;
             break;
           case 'contact':
-            response = `CONTACT DETAILS:
-- Phone  : 0387822490
-- Email  : nhutanhtran806@gmail.com
-- GitHub : https://github.com/NaGit09
-- Address: Thủ Đức, TP. Hồ Chí Minh`;
+            response = `COMMUNICATION TELEMETRY:
+- Phone   : 0387822490
+- Email   : nhutanhtran806@gmail.com
+- GitHub  : https://github.com/NaGit09
+- Location: Thu Đức, Ho Chi Minh City, Vietnam`;
             break;
           case 'cat':
             if (!arg) {
-              response = `Lỗi: Thiếu đối tham số. Sử dụng 'cat <file_name>' để đọc file.`;
+              response = `Error: Parameter missing. Usage syntax: 'cat <file_name>'`;
             } else if (FILE_CONTENTS[arg]) {
               response = FILE_CONTENTS[arg];
-              // Sync UI editor tab as well
               if (!openFiles.includes(arg)) {
                 setOpenFiles(prev => [...prev, arg]);
               }
               setActiveFile(arg);
             } else {
-              response = `Lỗi: Không tìm thấy file "${arg}". Nhìn danh sách file ở Sidebar bên trái.`;
+              response = `Error: Target asset "${arg}" not found in current directory framework.`;
             }
             break;
           case 'clear':
@@ -551,7 +431,7 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
             setTerminalInput('');
             return;
           default:
-            response = `Lỗi: Lệnh "${mainCommand}" không hợp lệ. Gõ "help" để trợ giúp.`;
+            response = `Shell: Command validation failed for "${mainCommand}". Type "help" to list workflows.`;
         }
 
         setTerminalHistory([...newHistory, { type: 'output', text: response }]);
@@ -563,7 +443,6 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
         executeTerminalCommand(terminalInput);
       };
 
-      // Run Order Simulation Sequence
       const runOrderSimulation = async () => {
         if (isSimulating) return;
         setIsSimulating(true);
@@ -574,7 +453,6 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
           setSimLog((prev) => [...prev, { timestamp, tag, msg, type }]);
         };
 
-        // Reset metrics
         setSimMetrics({
           gateway: { status: 'STANDBY', cpu: '0%', mem: '42MB' },
           auth: { status: 'STANDBY', cpu: '0%', mem: '118MB' },
@@ -585,12 +463,12 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
         });
 
         setSimStep('client');
-        log('CLIENT', 'Next.js 15 Client: Người dùng nhấn nút [Đặt hàng]. Khởi chạy phiên giao dịch...', 'system');
+        log('CLIENT', 'Next.js 15 Client: User clicks [Checkout]. Dispatching payload session transaction...', 'system');
         await new Promise((r) => setTimeout(r, 1100));
 
         setSimStep('gateway');
         setSimMetrics(prev => ({ ...prev, gateway: { status: 'ROUTING', cpu: '12%', mem: '48MB' } }));
-        log('API-GATEWAY', 'Kong Gateway: Nhận Request. Tiến hành định tuyến tới /api/v1/orders (Order-Service)...', 'gateway');
+        log('API-GATEWAY', 'Kong Gateway: Intercepted Request. Routing transmission packets to /api/v1/orders...', 'gateway');
         await new Promise((r) => setTimeout(r, 1100));
 
         setSimStep('auth');
@@ -599,20 +477,20 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
           auth: { status: 'VERIFYING', cpu: '24%', mem: '128MB' },
           redis: { status: 'SEARCHING', hits: '98.5%' }
         }));
-        log('AUTH-SERVICE', 'Auth Service: Giải mã và xác thực chữ ký JWT asymmetric key bằng thuật toán RS256...', 'auth');
+        log('AUTH-SERVICE', 'Auth Service: Executing RS256 token verification algorithms on public validation keys...', 'auth');
         await new Promise((r) => setTimeout(r, 1000));
-        log('REDIS-CACHE', 'Redis Client: Quét blacklist tìm kiếm Token thu hồi -> Kết quả: Token Sạch (Valid). Cache Hit!', 'redis');
+        log('REDIS-CACHE', 'Redis Client: Scan blacklist index for token signatures -> Clean result. Cache Hit!', 'redis');
         setSimMetrics(prev => ({ ...prev, redis: { status: 'HIT', hits: '98.6%' } }));
         await new Promise((r) => setTimeout(r, 1100));
 
         setSimStep('order');
         setSimMetrics(prev => ({ ...prev, order: { status: 'CREATING', cpu: '18%', mem: '168MB' } }));
-        log('ORDER-SERVICE', 'Order Service: Tạo bản ghi đơn hàng tạm thời trong cơ sở dữ liệu MySQL (Trạng thái: PENDING).', 'order');
+        log('ORDER-SERVICE', 'Order Service: Committing an intermediate transaction query into MySQL tier (Status: PENDING).', 'order');
         await new Promise((r) => setTimeout(r, 1200));
 
         setSimStep('kafka');
         setSimMetrics(prev => ({ ...prev, kafka: { status: 'PUBLISHING', msgs: 1 } }));
-        log('KAFKA-BROKER', 'Apache Kafka: Order Service publish event "order.created" thành công lên topic [orders-events].', 'kafka');
+        log('KAFKA-BROKER', 'Apache Kafka: Order domain emitted event payload "order.created" onto cluster logs [orders-events].', 'kafka');
         await new Promise((r) => setTimeout(r, 1300));
 
         setSimStep('inventory');
@@ -621,9 +499,9 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
           inventory: { status: 'HOLDING', cpu: '15%', mem: '134MB' },
           kafka: { status: 'DELIVERED', msgs: 1 }
         }));
-        log('INVENTORY-SERVICE', 'Inventory Service: Consumer bắt được event "order.created" từ Kafka. Tiến hành giữ hàng...', 'inventory');
+        log('INVENTORY-SERVICE', 'Inventory Service: Event consumer intercepted token packet from Kafka log. Evaluating volume allocation...', 'inventory');
         await new Promise((r) => setTimeout(r, 1100));
-        log('INVENTORY-SERVICE', 'Inventory Service: Khóa số lượng sản phẩm tạm thời thành công trong DB! Gửi tín hiệu commit.', 'success');
+        log('INVENTORY-SERVICE', 'Inventory Service: Allocation locks written to database instances safely. Returning event acknowledgment code.', 'success');
         await new Promise((r) => setTimeout(r, 1000));
 
         setSimStep('done');
@@ -635,11 +513,10 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
           redis: { status: 'ACTIVE', hits: '98.6%' },
           inventory: { status: 'IDLE', cpu: '0.1%', mem: '123MB' }
         });
-        log('SYSTEM', 'Hệ Thống Phân Tán: Đơn hàng hoàn tất đồng bộ! Chuyển trạng thái đơn hàng: THÀNH CÔNG (SUCCESS).', 'success');
+        log('SYSTEM', 'Distributed Framework: System sync finalized. Order validation state set to: SUCCESS.', 'success');
         setIsSimulating(false);
       };
 
-      // Form Handler
       const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -655,144 +532,93 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
         }, 4000);
       };
 
-      // Class helpers based on current active theme state
-      const isOcean = theme === 'ocean';
-      const themeBg = isOcean ? 'bg-slate-950 text-slate-100' : 'bg-synth-950 text-pink-50';
-      const themeAccentText = isOcean ? 'text-cyan-400' : 'text-fuchsia-400';
-      const themeGradientText = isOcean 
-        ? 'from-cyan-400 via-sky-400 to-emerald-400' 
-        : 'from-fuchsia-500 via-purple-500 to-pink-500';
-      const themeBorder = isOcean ? 'border-slate-900' : 'border-synth-900';
-      const themePanelBg = isOcean ? 'bg-slate-900/30 border-slate-900' : 'bg-synth-900/30 border-synth-900';
-      const themeNavActive = isOcean ? 'text-cyan-400 border-cyan-400' : 'text-fuchsia-400 border-fuchsia-400';
-      const themeBtn = isOcean 
-        ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 hover:from-cyan-400 hover:to-emerald-400 shadow-cyan-500/10' 
-        : 'bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white hover:from-fuchsia-400 hover:to-pink-400 shadow-fuchsia-500/10';
-
       return (
-        <div className={`min-h-screen ${themeBg} font-sans antialiased overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-500`}>
+        <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500 selection:text-slate-950">
 
-          {/* Dynamic Ambient Background Lights */}
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
-            {isOcean ? (
-              <>
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-orbit-1 pointer-events-none"></div>
-                <div className="absolute top-2/3 right-1/4 w-[450px] h-[450px] bg-emerald-500/10 rounded-full blur-3xl animate-orbit-2 pointer-events-none"></div>
-              </>
-            ) : (
-              <>
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl animate-orbit-1 pointer-events-none"></div>
-                <div className="absolute top-2/3 right-1/4 w-[450px] h-[450px] bg-purple-500/10 rounded-full blur-3xl animate-orbit-2 pointer-events-none"></div>
-              </>
-            )}
-          </div>
-
-          {/* Stick Navigation Bar */}
-          <header className={`sticky top-0 z-50 glass-panel backdrop-blur-md bg-opacity-70 border-b ${themeBorder} transition-colors duration-300`}>
+          {/* Header Navigation */}
+          <header className="sticky top-0 z-50 glass-panel border-b border-slate-900 bg-slate-950/70 backdrop-blur-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
               
-              {/* Brand Logo */}
               <div className="flex items-center space-x-2">
                 <span className="text-xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">
                   ANH.TN 
-                  <span className={`ml-2 text-[9px] font-mono px-2 py-0.5 rounded border ${isOcean ? 'bg-cyan-950 text-cyan-400 border-cyan-800' : 'bg-fuchsia-950 text-fuchsia-400 border-fuchsia-800'}`}>
-                    DEV SYSTEM
+                  <span className="ml-2 text-[9px] font-mono px-2 py-0.5 rounded border bg-cyan-950 text-cyan-400 border-cyan-800">
+                    CORE SYSTEM
                   </span>
                 </span>
               </div>
 
-              {/* Navigation Links */}
               <nav className="hidden md:flex space-x-6 text-xs sm:text-sm font-semibold text-slate-400">
-                <a href="#about" onClick={() => setActiveNav('about')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'about' ? themeAccentText : ''}`}>Về Tôi</a>
-                <a href="#skills" onClick={() => setActiveNav('skills')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'skills' ? themeAccentText : ''}`}>Kỹ Năng</a>
-                <a href="#architecture" onClick={() => setActiveNav('architecture')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'architecture' ? themeAccentText : ''}`}>Dự Án</a>
-                <a href="#terminal" onClick={() => setActiveNav('terminal')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'terminal' ? themeAccentText : ''}`}>IDE Terminal</a>
-                <a href="#contact" onClick={() => setActiveNav('contact')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'contact' ? themeAccentText : ''}`}>Liên Hệ</a>
+                <a href="#about" onClick={() => setActiveNav('about')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'about' ? 'text-cyan-400' : ''}`}>About</a>
+                <a href="#skills" onClick={() => setActiveNav('skills')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'skills' ? 'text-cyan-400' : ''}`}>Skills</a>
+                <a href="#architecture" onClick={() => setActiveNav('architecture')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'architecture' ? 'text-cyan-400' : ''}`}>Architecture</a>
+                <a href="#terminal" onClick={() => setActiveNav('terminal')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'terminal' ? 'text-cyan-400' : ''}`}>IDE Workspace</a>
+                <a href="#contact" onClick={() => setActiveNav('contact')} className={`hover:text-slate-200 transition-colors py-1 ${activeNav === 'contact' ? 'text-cyan-400' : ''}`}>Contact</a>
               </nav>
 
-              {/* Theme Switcher & Actions */}
-              <div className="flex items-center space-x-4">
-                
-                {/* Theme Selector Toggle */}
-                <button 
-                  onClick={() => setTheme(isOcean ? 'synth' : 'ocean')}
-                  className={`p-2 rounded-lg border flex items-center justify-center transition-all ${isOcean ? 'bg-slate-900 border-slate-800 text-cyan-400 hover:bg-slate-800' : 'bg-synth-900 border-synth-800 text-fuchsia-400 hover:bg-synth-800'}`}
-                  title="Đổi Giao Diện (Theme)"
-                  id="theme-switcher-btn"
-                >
-                  {isOcean ? <Icons.Sun /> : <Icons.Moon />}
-                </button>
-
+              <div className="flex items-center">
                 <a 
                   href="#contact"
-                  className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-md active:scale-95 ${themeBtn}`}
-                  id="hire-me-btn"
+                  className="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 hover:from-cyan-400 hover:to-emerald-400 transition-all shadow-md shadow-cyan-500/10 active:scale-95"
                 >
-                  Tuyển Dụng
+                  Contact Me
                 </a>
               </div>
 
             </div>
           </header>
 
-          <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-28">
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-28">
 
             {/* HERO SECTION */}
             <section className="max-w-4xl mx-auto text-center space-y-6 pt-4 sm:pt-10">
               <div className="space-y-4">
                 
-                {/* Visual Glow Status */}
-                <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium border ${isOcean ? 'bg-cyan-950/30 border-cyan-800/60 text-cyan-400' : 'bg-fuchsia-950/30 border-fuchsia-800/60 text-fuchsia-400'}`}>
+                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium border bg-cyan-950/30 border-cyan-800/60 text-cyan-400">
                   <span className="relative flex h-2 w-2">
-                    <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isOcean ? 'bg-cyan-400' : 'bg-fuchsia-400'}`}></span>
-                    <span className={`relative inline-flex rounded-full h-2 w-2 ${isOcean ? 'bg-cyan-500' : 'bg-fuchsia-500'}`}></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-cyan-400"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                   </span>
-                  <span>Sẵn sàng gia nhập dự án Software Engineer Intern</span>
+                  <span>Seeking Software Engineer Intern Opportunities</span>
                 </div>
 
-                {/* Primary Hero Text */}
                 <h1 className="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
-                  Hi, I'm <span className={`text-transparent bg-clip-text bg-gradient-to-r ${themeGradientText}`}>Trần Nhựt Anh</span>
+                  Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-emerald-400">Tran Nhut Anh</span>
                 </h1>
 
-                {/* Dynamic Role Typist */}
                 <div className="h-10 flex items-center justify-center">
                   <p className="text-lg sm:text-2xl font-mono text-slate-300">
-                    &gt; <span className={`${themeAccentText} font-bold`}>{typedText}</span>
+                    &gt; <span className="text-cyan-400 font-bold">{typedText}</span>
                     <span className="animate-pulse ml-0.5">|</span>
                   </p>
                 </div>
 
-                {/* Brief intro */}
                 <p className="text-slate-400 max-w-2xl text-sm sm:text-base leading-relaxed mx-auto">
-                  Sinh viên năm cuối ngành CNTT tại <strong className={isOcean ? 'text-emerald-400' : 'text-pink-400'}>Đại học Nông Lâm TP.HCM</strong>. 
-                  Đam mê thiết kế kiến trúc Backend hệ thống phân tán, xử lý luồng sự kiện phi đồng bộ chịu tải lớn 
-                  và tối ưu hóa trải nghiệm tương tác Frontend chất lượng cao.
+                  Senior Information Technology student at <strong>Ho Chi Minh City University of Agriculture and Forestry</strong>. 
+                  Focused on building robust backend systems, distributed architectures, and crafting premium frontend workflows.
                 </p>
 
-                {/* Grid stats */}
                 <div className="grid grid-cols-3 gap-3 max-w-md mx-auto pt-4">
-                  <div className={`p-3 rounded-xl border backdrop-blur-sm ${isOcean ? 'bg-slate-900/20 border-slate-900' : 'bg-synth-900/20 border-synth-900'}`}>
-                    <div className={`text-lg sm:text-xl font-black ${isOcean ? 'text-cyan-400' : 'text-fuchsia-400'}`}>3.0 / 4.0</div>
-                    <div className="text-[10px] text-slate-500 font-medium">GPA Hiện Tại</div>
+                  <div className="p-3 rounded-xl border border-slate-900 bg-slate-900/20 backdrop-blur-sm">
+                    <div className="text-lg sm:text-xl font-black text-cyan-400">3.0 / 4.0</div>
+                    <div className="text-[10px] text-slate-500 font-medium">Cumulative GPA</div>
                   </div>
-                  <div className={`p-3 rounded-xl border backdrop-blur-sm ${isOcean ? 'bg-slate-900/20 border-slate-900' : 'bg-synth-900/20 border-synth-900'}`}>
-                    <div className={`text-lg sm:text-xl font-black ${isOcean ? 'text-emerald-400' : 'text-pink-400'}`}>805</div>
-                    <div className="text-[10px] text-slate-500 font-medium">TOEIC Tiếng Anh</div>
+                  <div className="p-3 rounded-xl border border-slate-900 bg-slate-900/20 backdrop-blur-sm">
+                    <div className="text-lg sm:text-xl font-black text-emerald-400">805</div>
+                    <div className="text-[10px] text-slate-500 font-medium">TOEIC English Score</div>
                   </div>
-                  <div className={`p-3 rounded-xl border backdrop-blur-sm ${isOcean ? 'bg-slate-900/20 border-slate-900' : 'bg-synth-900/20 border-synth-900'}`}>
-                    <div className="text-lg sm:text-xl font-black text-amber-500">Khuyến Khích</div>
-                    <div className="text-[10px] text-slate-500 font-medium">Giải NCKH 2024</div>
+                  <div className="p-3 rounded-xl border border-slate-900 bg-slate-900/20 backdrop-blur-sm">
+                    <div className="text-lg sm:text-xl font-black text-amber-500">Awarded</div>
+                    <div className="text-[10px] text-slate-500 font-medium">Research Prize 2024</div>
                   </div>
                 </div>
 
-                {/* CTA Links */}
                 <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                   <a 
                     href="#architecture"
-                    className={`px-6 py-3 rounded-lg border text-sm font-semibold flex items-center transition-all group ${isOcean ? 'bg-slate-900 border-slate-800 text-slate-200 hover:bg-slate-800 hover:border-slate-700' : 'bg-synth-900 border-synth-800 text-pink-100 hover:bg-synth-800 hover:border-synth-700'}`}
+                    className="px-6 py-3 rounded-lg border border-slate-800 bg-slate-900 text-slate-200 hover:bg-slate-800 hover:border-slate-700 text-sm font-semibold flex items-center transition-all group"
                   >
-                    Khám phá dự án
+                    Explore Architectures
                     <span className="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
                   </a>
 
@@ -801,15 +627,15 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                       href="https://github.com/NaGit09" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className={`p-3 rounded-lg border transition-all ${isOcean ? 'bg-slate-900 border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-900' : 'bg-synth-900 border-synth-800 text-pink-300 hover:text-fuchsia-400 hover:border-fuchsia-900'}`}
-                      title="GitHub"
+                      className="p-3 rounded-lg border bg-slate-900 border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-900 transition-all"
+                      title="GitHub Profile"
                     >
                       <Icons.Github />
                     </a>
                     <a 
                       href="mailto:nhutanhtran806@gmail.com"
-                      className={`p-3 rounded-lg border transition-all ${isOcean ? 'bg-slate-900 border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-900' : 'bg-synth-900 border-synth-800 text-pink-300 hover:text-fuchsia-400 hover:border-fuchsia-900'}`}
-                      title="Gửi Email"
+                      className="p-3 rounded-lg border bg-slate-900 border-slate-800 text-slate-400 hover:text-cyan-400 hover:border-cyan-900 transition-all"
+                      title="Send Email"
                     >
                       <Icons.Mail />
                     </a>
@@ -819,65 +645,63 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
               </div>
             </section>
 
-            {/* ABOUT & CORE CV PORTAL */}
+            {/* ABOUT & TIMELINE CORES */}
             <section id="about" className="scroll-mt-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
-              {/* Left Column: Education Path */}
               <div className="lg:col-span-5 space-y-6">
                 <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-                  Hành Trình & <span className={`text-transparent bg-clip-text bg-gradient-to-r ${themeGradientText}`}>Học Vấn</span>
+                  Academic & <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Core Path</span>
                 </h2>
                 <p className="text-slate-400 leading-relaxed text-sm">
-                  Học tập bài bản chuyên ngành CNTT tại Đại học Nông Lâm TP.HCM, tôi được trang bị nền tảng khoa học máy tính sâu sắc, 
-                  phương pháp nghiên cứu khoa học có hệ thống và tinh thần tự nghiên cứu công nghệ bền bỉ.
+                  Studying Computer Science parameters systematically at university level, sharpening strong engineering problem-solving mindsets and system development execution structures.
                 </p>
 
                 <div className="space-y-3">
-                  <div className={`flex items-center space-x-3 p-4 rounded-xl border ${themePanelBg} hover:border-cyan-900/30 transition-all`}>
-                    <div className={`p-2.5 rounded-lg ${isOcean ? 'bg-cyan-950 text-cyan-400' : 'bg-fuchsia-950 text-fuchsia-400'}`}>
+                  <div className="flex items-center space-x-3 p-4 rounded-xl border border-slate-900 bg-slate-900/30 hover:border-cyan-900/30 transition-all">
+                    <div className="p-2.5 rounded-lg bg-cyan-950 text-cyan-400">
                       <Icons.Graduation />
                     </div>
                     <div>
-                      <h4 className="font-bold text-sm text-slate-200">Khoa Công Nghệ Thông Tin</h4>
-                      <p className="text-[11px] text-slate-500 font-medium">Đại học Nông Lâm (NLU) | 2022 - 2026</p>
+                      <h4 className="font-bold text-sm text-slate-200">Information Technology Department</h4>
+                      <p className="text-[11px] text-slate-500 font-medium">HCMC University of Agriculture & Forestry | 2022 - 2026</p>
                     </div>
                   </div>
 
-                  <div className={`flex items-center space-x-3 p-4 rounded-xl border ${themePanelBg} hover:border-emerald-900/30 transition-all`}>
+                  <div className="flex items-center space-x-3 p-4 rounded-xl border border-slate-900 bg-slate-900/30 hover:border-emerald-900/30 transition-all">
                     <div className="p-2.5 bg-emerald-950 text-emerald-400 rounded-lg">
                       <Icons.Award />
                     </div>
                     <div>
-                      <h4 className="font-bold text-sm text-slate-200">Giải Khuyến Khích NCKH Sáng Tạo 2024</h4>
-                      <p className="text-[11px] text-slate-500 font-medium">Nghiên cứu ứng dụng công nghệ đột phá, cấp trường.</p>
+                      <h4 className="font-bold text-sm text-slate-200">Scientific Research Consolation Prize 2024</h4>
+                      <p className="text-[11px] text-slate-500 font-medium">University level recognition for innovative application architectures.</p>
                     </div>
                   </div>
 
-                  <div className={`flex items-center space-x-3 p-4 rounded-xl border ${themePanelBg} hover:border-indigo-900/30 transition-all`}>
+                  <div className="flex items-center space-x-3 p-4 rounded-xl border border-slate-900 bg-slate-900/30 hover:border-indigo-900/30 transition-all">
                     <div className="p-2.5 bg-indigo-950 text-indigo-400 rounded-lg">
                       <Icons.Language />
                     </div>
                     <div>
-                      <h4 className="font-bold text-sm text-slate-200">Anh Văn TOEIC 805</h4>
-                      <p className="text-[11px] text-slate-500 font-medium">Tự tin giao tiếp, dịch & đọc tài liệu kỹ thuật nâng cao.</p>
+                      <h4 className="font-bold text-sm text-slate-200">TOEIC English Certification: 805</h4>
+                      <p className="text-[11px] text-slate-500 font-medium">Confident reading blueprints, compiling requirements, and tech communication.</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: Tailored CV Center */}
-              <div className={`lg:col-span-7 rounded-2xl border p-6 backdrop-blur-sm space-y-6 ${isOcean ? 'bg-slate-900/20 border-slate-900' : 'bg-synth-900/20 border-synth-900'}`}>
+              {/* Targeted Role Matrix View */}
+              <div className="lg:col-span-7 rounded-2xl border border-slate-900 bg-slate-900/20 p-6 backdrop-blur-sm space-y-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800/60">
                   <h3 className="text-lg font-bold text-slate-100 flex items-center">
-                    <span className={`w-1.5 h-6 rounded-full mr-3 ${isOcean ? 'bg-cyan-500' : 'bg-fuchsia-500'}`}></span>
-                    Role-Tailored CV Center
+                    <span className="w-1.5 h-6 rounded-full mr-3 bg-cyan-500"></span>
+                    Targeted Core Qualifications
                   </h3>
                   <div className="flex bg-slate-950 p-1 rounded-lg border border-slate-800">
                     {Object.keys(QUALIFICATIONS).map((roleKey) => (
                       <button
                         key={roleKey}
                         onClick={() => setSelectedCVRole(roleKey)}
-                        className={`px-2 py-1 text-[10px] font-bold uppercase rounded transition-all ${selectedCVRole === roleKey ? (isOcean ? 'bg-cyan-900 text-cyan-200' : 'bg-fuchsia-900 text-fuchsia-200') : 'text-slate-500 hover:text-slate-300'}`}
+                        className={`px-2 py-1 text-[10px] font-bold uppercase rounded transition-all ${selectedCVRole === roleKey ? 'bg-cyan-900 text-cyan-200' : 'text-slate-500 hover:text-slate-300'}`}
                       >
                         {roleKey === 'swe' ? 'SWE' : roleKey === 'backend' ? 'Backend' : 'Frontend'}
                       </button>
@@ -887,7 +711,7 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
 
                 <div className="space-y-4">
                   <div className="space-y-1">
-                    <div className={`text-base font-extrabold ${themeAccentText}`}>
+                    <div className="text-base font-extrabold text-cyan-400">
                       {QUALIFICATIONS[selectedCVRole].title}
                     </div>
                     <p className="text-xs text-slate-400 italic">
@@ -895,7 +719,6 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                     </p>
                   </div>
 
-                  {/* Bullet Points */}
                   <ul className="space-y-2">
                     {QUALIFICATIONS[selectedCVRole].points.map((point, index) => (
                       <li key={index} className="flex items-start text-xs text-slate-300 leading-relaxed">
@@ -907,57 +730,54 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                     ))}
                   </ul>
 
-                  {/* Tech stack highlights */}
                   <div className="space-y-2">
-                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block">Công nghệ ưu tiên cho role:</span>
+                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider block">Priority Technology Suite:</span>
                     <div className="flex flex-wrap gap-1.5">
                       {QUALIFICATIONS[selectedCVRole].techs.map((tech) => (
-                        <span key={tech} className={`px-2 py-0.5 rounded text-[10px] font-semibold font-mono ${isOcean ? 'bg-cyan-950/40 text-cyan-400 border border-cyan-900/30' : 'bg-fuchsia-950/40 text-fuchsia-400 border border-fuchsia-900/30'}`}>
+                        <span key={tech} className="px-2 py-0.5 rounded text-[10px] font-semibold font-mono bg-cyan-950/40 text-cyan-400 border border-cyan-900/30">
                           {tech}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Direct PDF Download Link */}
                   <div className="pt-2">
                     <a
                       href={QUALIFICATIONS[selectedCVRole].file}
                       download
-                      className={`w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center active:scale-95 ${themeBtn}`}
+                      className="w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 hover:from-cyan-400 hover:to-emerald-400 shadow-md active:scale-95"
                     >
                       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
-                      Tải Xuống Bản CV PDF Này
+                      Download Target CV Profile (PDF)
                     </a>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* DETAILED TECH STACK EXPLORER */}
+            {/* SIMPLIFIED TECH ECOSYSTEM EXPLORER */}
             <section id="skills" className="scroll-mt-24 space-y-8">
               <div className="text-center max-w-2xl mx-auto space-y-3">
                 <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-                  Hệ Sinh Thái <span className={`text-transparent bg-clip-text bg-gradient-to-r ${themeGradientText}`}>Công Nghệ</span>
+                  Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Ecosystem</span>
                 </h2>
                 <p className="text-slate-400 text-xs sm:text-sm">
-                  Nhấp vào từng kỹ năng cụ thể để khám phá cách tôi áp dụng nó vào các dự án thực tế.
+                  Select a stack classification layer to browse execution details in real projects.
                 </p>
 
-                {/* Filter tabs */}
                 <div className="flex flex-wrap justify-center gap-1.5 pt-2">
                   {[
-                    { key: 'languages', label: 'Ngôn Ngữ Lập Trình' },
+                    { key: 'languages', label: 'Languages' },
                     { key: 'frameworks', label: 'Frameworks' },
-                    { key: 'middleware', label: 'CSDL & Middleware' },
-                    { key: 'devops', label: 'DevOps & Công cụ' }
+                    { key: 'middleware', label: 'DB & Middleware' },
+                    { key: 'devops', label: 'DevOps & Tooling' }
                   ].map((tab) => (
                     <button
                       key={tab.key}
                       onClick={() => { setSkillTab(tab.key); setSelectedDetailSkill(null); }}
-                      className={`px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all border ${skillTab === tab.key ? (isOcean ? 'bg-cyan-950 border-cyan-800 text-cyan-400' : 'bg-fuchsia-950 border-fuchsia-800 text-fuchsia-400') : 'bg-slate-900/40 border-slate-800/80 text-slate-500 hover:text-slate-300'}`}
+                      className={`px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all border ${skillTab === tab.key ? 'bg-cyan-950 border-cyan-800 text-cyan-400' : 'bg-slate-900/40 border-slate-800/80 text-slate-500 hover:text-slate-300'}`}
                     >
                       {tab.label}
                     </button>
@@ -965,72 +785,55 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                 </div>
               </div>
 
-              {/* Skills Grid */}
+              {/* Skills Display Cards (Progress bars removed) */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {SKILLS_DATA[skillTab].map((skill, index) => (
                   <div
                     key={skill.name}
                     onClick={() => setSelectedDetailSkill(skill)}
-                    className={`cursor-pointer group relative p-5 rounded-2xl border transition-all ${isOcean ? 'bg-slate-900/30 border-slate-900 hover:border-cyan-500/40 hover:bg-slate-900/60' : 'bg-synth-900/30 border-synth-900 hover:border-fuchsia-500/40 hover:bg-synth-900/60'}`}
+                    className="cursor-pointer group relative p-5 rounded-2xl border bg-slate-900/30 border-slate-900 hover:border-cyan-500/40 hover:bg-slate-900/60 transition-all flex flex-col justify-between"
                   >
-                    <div className="flex justify-between items-center pb-2">
-                      <h4 className="font-extrabold text-sm text-slate-100">{skill.name}</h4>
-                      <span className={`text-[10px] font-bold font-mono ${themeAccentText}`}>{skill.level}</span>
+                    <div>
+                      <div className="flex justify-between items-center pb-2">
+                        <h4 className="font-extrabold text-sm text-slate-100">{skill.name}</h4>
+                        <span className="text-[10px] font-mono text-cyan-400 border border-cyan-900/40 px-1.5 py-0.2 rounded bg-cyan-950/20">Production</span>
+                      </div>
+                      <p className="text-[11px] text-slate-400 line-clamp-3 leading-relaxed mt-2">
+                        {skill.use}
+                      </p>
                     </div>
                     
-                    {/* Progress Bar */}
-                    <div className="w-full h-1 bg-slate-950 rounded-full overflow-hidden mb-3">
-                      <div 
-                        className={`h-full rounded-full transition-all duration-500 ${isOcean ? 'bg-gradient-to-r from-cyan-500 to-emerald-500' : 'bg-gradient-to-r from-fuchsia-500 to-pink-500'}`}
-                        style={{ width: skill.level }}
-                      ></div>
-                    </div>
-                    
-                    <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">
-                      {skill.use}
-                    </p>
-                    
-                    <div className={`text-[9px] font-bold uppercase mt-3 tracking-wider flex items-center transition-colors ${isOcean ? 'text-cyan-600 group-hover:text-cyan-400' : 'text-fuchsia-600 group-hover:text-fuchsia-400'}`}>
-                      Xem chi tiết thực chiến &rarr;
+                    <div className="text-[9px] font-bold uppercase mt-4 tracking-wider text-cyan-600 group-hover:text-cyan-400 transition-colors flex items-center">
+                      Explore Deep-Dive &rarr;
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Dynamic Skill Detail Glass Overlay */}
+              {/* Glass Overlay Detail Segment */}
               {selectedDetailSkill && (
-                <div className={`p-6 rounded-2xl border ${themeBorder} backdrop-blur-md transition-all duration-300 max-w-3xl mx-auto space-y-4 shadow-2xl ${isOcean ? 'bg-slate-950/90' : 'bg-synth-950/90'}`}>
+                <div className="p-6 rounded-2xl border border-slate-900 bg-slate-950/90 backdrop-blur-md transition-all duration-300 max-w-2xl mx-auto space-y-4 shadow-2xl">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <span className={`w-3 h-3 rounded-full ${isOcean ? 'bg-cyan-500' : 'bg-fuchsia-500'}`}></span>
-                      <h3 className="text-lg font-black text-slate-100 font-mono">{selectedDetailSkill.name} Deep-Dive</h3>
+                      <span className="w-2 h-2 rounded-full bg-cyan-500"></span>
+                      <h3 className="text-md font-black text-slate-100 font-mono">{selectedDetailSkill.name} Execution Architecture</h3>
                     </div>
                     <button 
                       onClick={() => setSelectedDetailSkill(null)}
-                      className="text-xs text-slate-500 hover:text-slate-300 font-mono uppercase font-bold"
+                      className="text-[10px] text-slate-500 hover:text-slate-300 font-mono uppercase font-bold"
                     >
-                      [Đóng]
+                      [Close]
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
-                    <div className="md:col-span-8 space-y-3">
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
-                        {selectedDetailSkill.desc}
-                      </p>
-                      <div className="space-y-1">
-                        <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest block">Kinh nghiệm thực tiễn:</span>
-                        <div className={`p-3 rounded-xl border text-xs leading-relaxed font-mono ${isOcean ? 'bg-slate-950 border-slate-900 text-slate-400' : 'bg-synth-950 border-synth-900 text-pink-200'}`}>
-                          {selectedDetailSkill.use}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="md:col-span-4 space-y-3">
-                      <div className={`p-4 rounded-xl border text-center ${isOcean ? 'bg-slate-900/40 border-slate-800' : 'bg-synth-900/40 border-synth-800'}`}>
-                        <div className="text-[10px] text-slate-500 uppercase font-bold tracking-widest font-mono">Tự đánh giá</div>
-                        <div className={`text-3xl font-black font-mono my-1 ${themeAccentText}`}>{selectedDetailSkill.level}</div>
-                        <div className="text-[9px] text-slate-400">Dựa trên mức độ ứng dụng sâu vào microservices.</div>
+                  <div className="space-y-3">
+                    <p className="text-xs text-slate-300 leading-relaxed font-medium">
+                      {selectedDetailSkill.desc}
+                    </p>
+                    <div className="space-y-1">
+                      <span className="text-[9px] font-mono text-slate-500 uppercase tracking-widest block">Implementation Scope:</span>
+                      <div className="p-3 rounded-xl border bg-slate-950 border-slate-900 text-xs font-mono text-slate-400 leading-relaxed">
+                        {selectedDetailSkill.use}
                       </div>
                     </div>
                   </div>
@@ -1038,21 +841,21 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
               )}
             </section>
 
-            {/* REAL-TIME SYSTEMS MONITOR & GRAPH (FURNIRO) */}
+            {/* REAL-TIME DISTRIBUTED SYSTEMS SIMULATOR */}
             <section id="architecture" className="scroll-mt-24 space-y-8">
               <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
                 <div className="space-y-2">
                   <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-                    Kiến Trúc & <span className={`text-transparent bg-clip-text bg-gradient-to-r ${themeGradientText}`}>Luồng Hệ Thống</span>
+                    Architecture & <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">System Flow</span>
                   </h2>
                   <p className="text-slate-400 text-xs sm:text-sm max-w-xl">
-                    Tôi thiết kế kiến trúc backend an toàn và bền vững. Nhấp chọn dự án và kiểm thử hiệu năng luồng chạy thực tế.
+                    Demonstrating real-time event distribution and secure edge routing handling logic pipelines.
                   </p>
                 </div>
 
                 <div className="flex space-x-2 bg-slate-950 p-1 rounded-lg border border-slate-900">
                   <button className="px-4 py-2 rounded-lg text-xs font-extrabold uppercase tracking-wider text-cyan-400 bg-slate-900 border border-slate-800">
-                    Furniro E-Commerce
+                    Furniro E-Commerce (6 Services)
                   </button>
                   <a href="https://group76-news24h.vercel.app/" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-slate-300 flex items-center">
                     News24h Demo <span className="ml-1.5"><Icons.ExternalLink /></span>
@@ -1062,128 +865,110 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
-                {/* Left Side: System Specifications */}
                 <div className="lg:col-span-4 space-y-4">
-                  <div className={`rounded-2xl border p-5 space-y-4 ${isOcean ? 'bg-slate-900/30 border-slate-900' : 'bg-synth-900/30 border-synth-900'}`}>
+                  <div className="rounded-2xl border border-slate-900 bg-slate-900/30 p-5 space-y-4">
                     <div>
-                      <span className="text-[9px] font-mono text-cyan-400 uppercase tracking-widest block font-bold">Dự án trọng tâm (Java / Next.js)</span>
-                      <h3 className="text-xl font-black text-slate-100 font-mono">Furniro E-Commerce</h3>
+                      <span className="text-[9px] font-mono text-cyan-400 uppercase tracking-widest block font-bold">Featured Core Engine</span>
+                      <h3 className="text-xl font-black text-slate-100 font-mono">Furniro Project Ecosystem</h3>
                     </div>
                     <p className="text-xs text-slate-400 leading-relaxed">
-                      Giải pháp thương mại điện tử chuyên nghiệp có kiến trúc phân tán gồm **6 microservices domain-driven** độc lập:
+                      Microservices framework isolating business logistics into **6 domain independent containers**:
                     </p>
 
                     <ul className="text-xs text-slate-300 space-y-2 border-t border-slate-800/80 pt-3 font-medium">
-                      <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-2.5"></span>Bảo mật Asymmetric RS256 cặp khóa RSA ký JWT</li>
-                      <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-2.5"></span>Xử lý đặt hàng bất đồng bộ qua Apache Kafka Broker</li>
-                      <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-2.5"></span>Quản lý Session Blacklist thông qua Redis Cache</li>
-                      <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-2.5"></span>Đóng gói container Docker-Compose toàn diện 6 services</li>
+                      <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-2.5"></span>RS256 Asymmetric Key encryption token signatures</li>
+                      <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-2.5"></span>Asynchronous event streams powered by Apache Kafka</li>
+                      <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-2.5"></span>Token eviction tracking with Redis caching nodes</li>
+                      <li className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-2.5"></span>Full dockerized compose tree orchestration matrix</li>
                     </ul>
 
                     <div className="pt-2 flex justify-between items-center text-xs">
                       <a href="https://github.com/NaGit09/FE-Furniro.git" target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-bold hover:underline flex items-center">
-                        <Icons.Github /> <span className="ml-1.5">Mã nguồn Frontend</span>
+                        <Icons.Github /> <span className="ml-1.5">Frontend Repository</span>
                       </a>
                     </div>
                   </div>
 
-                  {/* Interactive Trigger Panel */}
-                  <div className={`rounded-2xl border p-5 text-center space-y-3 ${isOcean ? 'bg-slate-900/30 border-slate-900' : 'bg-synth-900/30 border-synth-900'}`}>
+                  <div className="rounded-2xl border border-slate-900 bg-slate-900/30 p-5 text-center space-y-3">
                     <h4 className="text-xs font-extrabold text-slate-200 uppercase tracking-wider font-mono">Simulate Event-Driven Flows</h4>
                     <p className="text-[11px] text-slate-400 leading-relaxed">
-                      Kích hoạt giả lập luồng giao dịch mua hàng để theo dõi active traffic truyền tin, metric CPU/RAM và logs trực tiếp của 6 services.
+                      Trigger the visual simulator to track thread routing, message state deliveries and trace console runtime metrics.
                     </p>
                     <button
                       onClick={runOrderSimulation}
                       disabled={isSimulating}
-                      className={`w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center ${isSimulating ? 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700' : themeBtn}`}
-                      id="simulation-trigger-btn"
+                      className={`w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center ${isSimulating ? 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700' : 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold'}`}
                     >
-                      {isSimulating ? 'Đang giả lập...' : 'Chạy Luồng Đặt Hàng 🚀'}
+                      {isSimulating ? 'Tracing Engine Channels...' : 'Fire Checkout Sim 🚀'}
                     </button>
                   </div>
                 </div>
 
-                {/* Right Side: Visual SVG Node Graphic Monitor */}
-                <div className={`lg:col-span-8 rounded-2xl border p-6 flex flex-col justify-between relative min-h-[480px] overflow-hidden ${isOcean ? 'bg-slate-900/40 border-slate-900' : 'bg-synth-900/40 border-synth-900'}`}>
+                {/* System Node Tracing Graphic Map */}
+                <div className="lg:col-span-8 rounded-2xl border border-slate-900 bg-slate-900/40 p-6 flex flex-col justify-between relative min-h-[480px] overflow-hidden">
                   
-                  {/* Status telemetry indicator */}
                   <div className="absolute top-4 left-4 flex items-center space-x-2">
                     <span className={`w-2 h-2 rounded-full ${isSimulating ? 'bg-emerald-500 animate-ping' : 'bg-cyan-500'}`}></span>
-                    <span className="text-[9px] font-mono text-slate-400 tracking-wider">SYSTEM MONITOR GRAPH v2.1</span>
+                    <span className="text-[9px] font-mono text-slate-400 tracking-wider">SYSTEM MONITOR TELEMETRY v2.1</span>
                   </div>
 
-                  {/* SVG & Node Grid */}
                   <div className="flex-1 flex flex-col justify-center items-center py-6">
                     <div className="relative w-full max-w-lg h-72 flex flex-col justify-between items-center">
                       
-                      {/* SVG active flow vectors */}
                       <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" xmlns="http://www.w3.org/2000/svg">
-                        {/* Flow paths */}
-                        {/* Client -> Gateway (Line down) */}
                         <path d="M 250,20 L 250,90" stroke={simStep ? '#06b6d4' : '#1e293b'} strokeWidth="2.5" fill="none" className={isSimulating && simStep === 'gateway' ? 'animate-flow' : ''} />
-                        
-                        {/* Gateway -> Auth (Left Diagonal) */}
                         <path d="M 250,90 L 120,150" stroke={['auth', 'order', 'kafka', 'inventory', 'done'].includes(simStep) ? '#06b6d4' : '#1e293b'} strokeWidth="2.5" fill="none" className={isSimulating && simStep === 'auth' ? 'animate-flow' : ''} />
-                        
-                        {/* Gateway -> Order (Right Diagonal) */}
                         <path d="M 250,90 L 380,150" stroke={['order', 'kafka', 'inventory', 'done'].includes(simStep) ? '#06b6d4' : '#1e293b'} strokeWidth="2.5" fill="none" className={isSimulating && simStep === 'order' ? 'animate-flow' : ''} />
-                        
-                        {/* Order -> Kafka (Line down) */}
                         <path d="M 380,150 L 250,210" stroke={['kafka', 'inventory', 'done'].includes(simStep) ? '#10b981' : '#1e293b'} strokeWidth="2.5" fill="none" className={isSimulating && simStep === 'kafka' ? 'animate-flow' : ''} />
-
-                        {/* Kafka -> Inventory (Left Diagonal down) */}
                         <path d="M 250,210 L 120,270" stroke={['inventory', 'done'].includes(simStep) ? '#10b981' : '#1e293b'} strokeWidth="2.5" fill="none" className={isSimulating && simStep === 'inventory' ? 'animate-flow' : ''} />
                       </svg>
 
                       {/* 1. Client Node */}
-                      <div className={`z-10 px-4 py-1.5 rounded-lg border text-[10px] sm:text-xs font-mono font-bold transition-all duration-300 ${simStep === 'client' ? 'bg-cyan-950 border-cyan-400 text-cyan-200 shadow-lg shadow-cyan-500/20 scale-105' : 'bg-slate-900 border-slate-800 text-slate-300'}`}>
-                        🖥️ Next.js 15 Client
+                      <div className={`z-10 px-4 py-1.5 rounded-lg border text-[10px] sm:text-xs font-mono font-bold transition-all duration-300 ${simStep === 'client' ? 'bg-cyan-950 border-cyan-400 text-cyan-200 shadow-lg scale-105' : 'bg-slate-900 border-slate-800 text-slate-300'}`}>
+                        🖥️ Next.js 15 Client Browser
                       </div>
 
-                      {/* 2. Kong API Gateway Node */}
-                      <div className={`z-10 px-4 py-1.5 rounded-lg border text-[10px] sm:text-xs font-mono font-bold transition-all duration-300 ${simStep === 'gateway' ? 'bg-cyan-950 border-cyan-400 text-cyan-200 shadow-lg shadow-cyan-500/20 scale-105' : 'bg-slate-900 border-slate-800 text-slate-300'}`}>
-                        🛡️ Kong API Gateway
-                        <span className="block text-[8px] text-slate-500 font-medium font-sans">Routing & HTTPS Proxy</span>
+                      {/* 2. Gateway Proxy Engine */}
+                      <div className={`z-10 px-4 py-1.5 rounded-lg border text-[10px] sm:text-xs font-mono font-bold transition-all duration-300 ${simStep === 'gateway' ? 'bg-cyan-950 border-cyan-400 text-cyan-200 shadow-lg scale-105' : 'bg-slate-900 border-slate-800 text-slate-300'}`}>
+                        🛡️ Kong API Edge Gateway
+                        <span className="block text-[8px] text-slate-500 font-medium font-sans">Payload Routing & Reverse Proxy</span>
                       </div>
 
-                      {/* 3. Middle Services Row */}
+                      {/* 3. Core Compute Clusters */}
                       <div className="w-full flex justify-between px-2 sm:px-6 z-10">
-                        {/* Auth Service */}
-                        <div className={`px-3 py-2 rounded-xl border text-[10px] sm:text-xs font-mono max-w-[170px] text-center transition-all duration-300 ${simStep === 'auth' ? 'bg-cyan-950 border-cyan-400 text-cyan-200 shadow-lg shadow-cyan-500/20 scale-105' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
+                        <div className={`px-3 py-2 rounded-xl border text-[10px] sm:text-xs font-mono max-w-[170px] text-center transition-all duration-300 ${simStep === 'auth' ? 'bg-cyan-950 border-cyan-400 text-cyan-200 shadow-lg scale-105' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
                           <div className="font-bold">🔑 Auth Service</div>
-                          <div className="text-[8px] text-slate-500 mt-0.5">RS256 JWT Verify</div>
+                          <div className="text-[8px] text-slate-500 mt-0.5">RS256 JWT Subsystems</div>
                           <div className="flex justify-around text-[7px] text-slate-500 mt-1 border-t border-slate-800/80 pt-1 font-sans">
                             <span>CPU: {simMetrics.auth.cpu}</span>
-                            <span>MEM: {simMetrics.auth.mem}</span>
+                            <span>RAM: {simMetrics.auth.mem}</span>
                           </div>
                         </div>
 
-                        {/* Order Service */}
-                        <div className={`px-3 py-2 rounded-xl border text-[10px] sm:text-xs font-mono max-w-[170px] text-center transition-all duration-300 ${simStep === 'order' ? 'bg-cyan-950 border-cyan-400 text-cyan-200 shadow-lg shadow-cyan-500/20 scale-105' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
+                        <div className={`px-3 py-2 rounded-xl border text-[10px] sm:text-xs font-mono max-w-[170px] text-center transition-all duration-300 ${simStep === 'order' ? 'bg-cyan-950 border-cyan-400 text-cyan-200 shadow-lg scale-105' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
                           <div className="font-bold">📝 Order Service</div>
-                          <div className="text-[8px] text-slate-500 mt-0.5">MySQL Persistence</div>
+                          <div className="text-[8px] text-slate-500 mt-0.5">MySQL Persistent Layer</div>
                           <div className="flex justify-around text-[7px] text-slate-500 mt-1 border-t border-slate-800/80 pt-1 font-sans">
                             <span>CPU: {simMetrics.order.cpu}</span>
-                            <span>MEM: {simMetrics.order.mem}</span>
+                            <span>RAM: {simMetrics.order.mem}</span>
                           </div>
                         </div>
                       </div>
 
-                      {/* 4. Apache Kafka Event Stream */}
-                      <div className={`z-10 px-5 py-1.5 rounded-lg border text-[10px] sm:text-xs font-mono transition-all duration-300 ${simStep === 'kafka' ? 'bg-emerald-950 border-emerald-400 text-emerald-200 shadow-lg shadow-emerald-500/20 scale-105' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
-                        <span className="font-bold">📡 Apache Kafka Broker</span>
-                        <span className="block text-[8px] text-slate-500 text-center font-sans">Active topics: 3 | Msg: {simMetrics.kafka.msgs}</span>
+                      {/* 4. Asynchronous Pipeline Message Broker */}
+                      <div className={`z-10 px-5 py-1.5 rounded-lg border text-[10px] sm:text-xs font-mono transition-all duration-300 ${simStep === 'kafka' ? 'bg-emerald-950 border-emerald-400 text-emerald-200 shadow-lg scale-105' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
+                        <span className="font-bold">📡 Apache Kafka Multi-Broker</span>
+                        <span className="block text-[8px] text-slate-500 text-center font-sans">Active Topics: 3 | Transmitted: {simMetrics.kafka.msgs}</span>
                       </div>
 
-                      {/* 5. Inventory Service Node */}
+                      {/* 5. Inventory Storage Sub-tier */}
                       <div className="w-full flex justify-start px-2 sm:px-6 z-10">
-                        <div className={`px-3 py-2 rounded-xl border text-[10px] sm:text-xs font-mono max-w-[180px] text-center transition-all duration-300 ${simStep === 'inventory' ? 'bg-emerald-950 border-emerald-400 text-emerald-200 shadow-lg shadow-emerald-500/20 scale-105' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
+                        <div className={`px-3 py-2 rounded-xl border text-[10px] sm:text-xs font-mono max-w-[180px] text-center transition-all duration-300 ${simStep === 'inventory' ? 'bg-emerald-950 border-emerald-400 text-emerald-200 shadow-lg scale-105' : 'bg-slate-900 border-slate-800 text-slate-400'}`}>
                           <div className="font-bold">📦 Inventory Service</div>
-                          <div className="text-[8px] text-slate-500 mt-0.5">Reserve Stock Logic</div>
+                          <div className="text-[8px] text-slate-500 mt-0.5">Distributed Locks Module</div>
                           <div className="flex justify-around text-[7px] text-slate-500 mt-1 border-t border-slate-800/80 pt-1 font-sans">
                             <span>CPU: {simMetrics.inventory.cpu}</span>
-                            <span>MEM: {simMetrics.inventory.mem}</span>
+                            <span>RAM: {simMetrics.inventory.mem}</span>
                           </div>
                         </div>
                       </div>
@@ -1191,11 +976,11 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                     </div>
                   </div>
 
-                  {/* Console logs output */}
+                  {/* Simulator Terminal Output Stream */}
                   <div className="bg-slate-950 border border-slate-900 rounded-xl p-3.5 font-mono text-[9px] sm:text-[10px] h-32 overflow-y-auto space-y-1.5">
-                    <div className="text-slate-500">// Nhật ký theo dõi phân tán thời gian thực (Console logs)</div>
+                    <div className="text-slate-500">// Distributed Runtime Console Outputs</div>
                     {simLog.length === 0 && (
-                      <div className="text-slate-600 italic">Hệ thống đang hoạt động ở chế độ chờ (Standby). Bấm nút kích hoạt giả lập để kiểm thử...</div>
+                      <div className="text-slate-600 italic">Ecosystem waiting in STANDBY mode. Engage simulation button to intercept live transactions...</div>
                     )}
                     {simLog.map((log, index) => {
                       let tagColor = 'text-cyan-400';
@@ -1205,7 +990,7 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                       if (log.type === 'redis') tagColor = 'text-red-400';
                       if (log.type === 'success') tagColor = 'text-emerald-400';
                       return (
-                        <div key={index} className="flex space-x-2 leading-relaxed animate-fadeIn">
+                        <div key={index} className="flex space-x-2 leading-relaxed">
                           <span className="text-slate-600">[{log.timestamp}]</span>
                           <span className={`${tagColor} font-bold`}>[{log.tag}]</span>
                           <span className="text-slate-300">{log.msg}</span>
@@ -1219,39 +1004,35 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
               </div>
             </section>
 
-            {/* INTEGRATED IDE & SHELL TERMINAL EMULATOR */}
+            {/* INTEGRATED IDE INTERACTIVE TERMINAL EMULATOR */}
             <section id="terminal" className="scroll-mt-24 space-y-6">
               <div className="text-center max-w-2xl mx-auto space-y-2">
                 <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-                  VS Code <span className={`text-transparent bg-clip-text bg-gradient-to-r ${themeGradientText}`}>IDE Terminal</span>
+                  VS Code <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Workspace Emulator</span>
                 </h2>
                 <p className="text-slate-400 text-xs sm:text-sm">
-                  Dành riêng cho nhà tuyển dụng chuyên kỹ thuật. Click duyệt file ở Sidebar hoặc gõ lệnh trực tiếp để tương tác.
+                  Click the workspace asset components in the explorer file tree or type commands directly into the prompt.
                 </p>
               </div>
 
-              {/* VS Code Window Container */}
               <div className="max-w-4xl mx-auto bg-[#080d16] border border-slate-800 rounded-xl shadow-2xl overflow-hidden font-mono flex flex-col min-h-[460px]">
                 
-                {/* 1. Editor Header */}
                 <div className="bg-[#0f172a] px-4 py-3 flex items-center justify-between border-b border-slate-900 select-none">
                   <div className="flex items-center space-x-1.5">
                     <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
                     <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
                     <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
-                    <span className="text-[10px] text-slate-500 font-bold ml-2">nhut-anh-ide - VS Code Server</span>
+                    <span className="text-[10px] text-slate-500 font-bold ml-2">nhut-anh-workspace - VS Code Server</span>
                   </div>
                   <span className="text-[10px] text-slate-500">nhut-anh@nlu-ubuntu-2026</span>
                 </div>
 
-                {/* 2. Main Workspace Body */}
                 <div className="flex-1 flex flex-col sm:flex-row items-stretch">
                   
-                  {/* Left Sidebar Explorer */}
                   <div className="w-full sm:w-48 bg-[#0b132b]/80 border-r border-slate-900 p-3 select-none flex flex-col justify-between">
                     <div>
                       <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest pb-2 flex items-center justify-between border-b border-slate-900/60 mb-2">
-                        <span>WORKSPACE Explorer</span>
+                        <span>WORKSPACE</span>
                         <span>📁</span>
                       </div>
                       <div className="space-y-1">
@@ -1259,7 +1040,6 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                           <Icons.Folder />
                           <span>cv-portfolio</span>
                         </div>
-                        {/* Files list */}
                         <div className="pl-4 space-y-0.5">
                           {Object.keys(FILE_CONTENTS).map((filename) => (
                             <button
@@ -1275,15 +1055,13 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                       </div>
                     </div>
                     <div className="pt-4 border-t border-slate-900/60 hidden sm:block">
-                      <div className="text-[9px] text-slate-500">Language: UMD React 18</div>
-                      <div className="text-[9px] text-slate-500">Transpiler: Babel STANDALONE</div>
+                      <div className="text-[9px] text-slate-500">UMD React v18 Active</div>
+                      <div className="text-[9px] text-slate-500">Babel Runtime Engine</div>
                     </div>
                   </div>
 
-                  {/* Central Text Editor Area */}
                   <div className="flex-1 bg-[#050811] flex flex-col min-h-[220px]">
                     
-                    {/* Top file tabs */}
                     <div className="bg-[#0b132b]/40 flex border-b border-slate-900/80 overflow-x-auto select-none">
                       {openFiles.map((filename) => (
                         <div
@@ -1303,7 +1081,6 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                       ))}
                     </div>
 
-                    {/* File contents container */}
                     <div className="flex-1 p-4 font-mono text-[10.5px] overflow-y-auto leading-relaxed select-text min-h-[160px]">
                       {activeFile && FILE_CONTENTS[activeFile] ? (
                         <table className="w-full border-collapse">
@@ -1317,7 +1094,7 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                           </tbody>
                         </table>
                       ) : (
-                        <div className="text-slate-600 italic flex items-center justify-center h-full">Hãy chọn một file từ Explorer để mở...</div>
+                        <div className="text-slate-600 italic flex items-center justify-center h-full">Select a workspace configuration layer to display variables...</div>
                       )}
                     </div>
 
@@ -1325,11 +1102,9 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
 
                 </div>
 
-                {/* 3. Bottom Shell Terminal Console */}
                 <div className="bg-[#03060c] border-t border-slate-900 p-3.5 flex flex-col h-48 justify-between select-text">
                   
-                  {/* Console Command output history */}
-                  <div className="flex-1 overflow-y-auto space-y-1.5 mb-2 terminal-scroll">
+                  <div className="flex-1 overflow-y-auto space-y-1.5 mb-2">
                     {terminalHistory.map((item, idx) => (
                       <div key={idx} className="text-[11px]">
                         {item.type === 'input' ? (
@@ -1338,16 +1113,15 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                             <span className="font-bold">{item.text}</span>
                           </div>
                         ) : (
-                          <pre className="text-slate-400 whitespace-pre-wrap leading-relaxed mt-0.5 font-mono select-text">{item.text}</pre>
+                          <pre className="text-slate-400 whitespace-pre-wrap leading-relaxed mt-0.5 font-mono">{item.text}</pre>
                         )}
                       </div>
                     ))}
                     <div ref={terminalBottomRef} />
                   </div>
 
-                  {/* Quick-action autocomplete chips */}
                   <div className="flex flex-wrap items-center gap-1.5 pb-2 border-t border-slate-900/60 pt-2 select-none">
-                    <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mr-1">Quick Run:</span>
+                    <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider mr-1">Hot Shortcuts:</span>
                     {['help', 'about', 'skills', 'projects', 'contact'].map((chip) => (
                       <button
                         key={chip}
@@ -1359,18 +1133,17 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
                     ))}
                   </div>
 
-                  {/* Terminal input form */}
                   <form onSubmit={handleTerminalSubmit} className="flex items-center bg-[#070b13] border border-slate-900 rounded-lg px-3 py-1.5">
                     <span className="text-slate-500 mr-2 text-xs font-bold select-none">anh-tn@nlu:~$</span>
                     <input
                       type="text"
                       value={terminalInput}
                       onChange={(e) => setTerminalInput(e.target.value)}
-                      placeholder="Gõ các lệnh: 'help', 'about', 'skills', 'cat skills.json', 'projects'..."
+                      placeholder="Execute operations: 'help', 'about', 'skills', 'cat about_me.md'..."
                       className="flex-1 bg-transparent border-none outline-none text-cyan-400 text-xs font-mono p-0 focus:ring-0 focus:outline-none"
                     />
-                    <button type="submit" className="text-[10px] text-cyan-400 hover:text-cyan-300 font-black ml-2 uppercase select-none tracking-wider">
-                      RUN
+                    <button type="submit" className="text-[10px] text-cyan-400 hover:text-cyan-300 font-black ml-2 uppercase tracking-wider">
+                      EXEC
                     </button>
                   </form>
 
@@ -1379,114 +1152,111 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
               </div>
             </section>
 
-            {/* CONTACT & GET IN TOUCH */}
+            {/* CONTACT SECTOR */}
             <section id="contact" className="scroll-mt-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
-              {/* Left Column: Direct channels */}
               <div className="lg:col-span-5 space-y-6">
                 <h2 className="text-2xl sm:text-3xl font-black tracking-tight">
-                  Kết Nối <span className={`text-transparent bg-clip-text bg-gradient-to-r ${themeGradientText}`}>Với Tôi</span>
+                  Connect <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Channels</span>
                 </h2>
                 <p className="text-slate-400 leading-relaxed text-sm">
-                  Tôi luôn đón chào các cơ hội thực tập Software Engineer, thảo luận dự án backend hoặc đơn giản là chia sẻ niềm đam mê lập trình hệ thống. 
-                  Hãy gửi thông tin phản hồi cho tôi ngay!
+                  Open for software engineer internships, backend infrastructure discussions, or technical architecture code audits.
                 </p>
 
                 <div className="space-y-3">
-                  <a href="tel:0387822490" className={`flex items-center space-x-3 p-4 rounded-xl border transition-all text-slate-300 hover:text-cyan-400 ${themePanelBg} hover:border-cyan-500/20`}>
+                  <a href="tel:0387822490" className="flex items-center space-x-3 p-4 rounded-xl border border-slate-900 text-slate-300 hover:text-cyan-400 bg-slate-900/30 hover:border-cyan-500/20 transition-all">
                     <div className="p-2.5 bg-cyan-950 text-cyan-400 rounded-lg">
                       <Icons.Phone />
                     </div>
                     <div>
-                      <div className="text-[9px] font-mono text-slate-500 uppercase font-bold tracking-widest">Điện thoại di động</div>
+                      <div className="text-[9px] font-mono text-slate-500 uppercase font-bold tracking-widest">Mobile Telephony</div>
                       <div className="font-bold text-sm">0387822490</div>
                     </div>
                   </a>
 
-                  <a href="mailto:nhutanhtran806@gmail.com" className={`flex items-center space-x-3 p-4 rounded-xl border transition-all text-slate-300 hover:text-cyan-400 ${themePanelBg} hover:border-cyan-500/20`}>
+                  <a href="mailto:nhutanhtran806@gmail.com" className="flex items-center space-x-3 p-4 rounded-xl border border-slate-900 text-slate-300 hover:text-cyan-400 bg-slate-900/30 hover:border-cyan-500/20 transition-all">
                     <div className="p-2.5 bg-cyan-950 text-cyan-400 rounded-lg">
                       <Icons.Mail />
                     </div>
                     <div>
-                      <div className="text-[9px] font-mono text-slate-500 uppercase font-bold tracking-widest">Email liên lạc</div>
+                      <div className="text-[9px] font-mono text-slate-500 uppercase font-bold tracking-widest">Direct Mailbox</div>
                       <div className="font-bold text-sm">nhutanhtran806@gmail.com</div>
                     </div>
                   </a>
 
-                  <div className={`flex items-center space-x-3 p-4 rounded-xl border text-slate-300 ${themePanelBg}`}>
+                  <div className="flex items-center space-x-3 p-4 rounded-xl border border-slate-900 text-slate-300 bg-slate-900/30">
                     <div className="p-2.5 bg-emerald-950 text-emerald-400 rounded-lg">
                       <Icons.MapPin />
                     </div>
                     <div>
-                      <div className="text-[9px] font-mono text-slate-500 uppercase font-bold tracking-widest">Khu vực sinh sống</div>
-                      <div className="font-bold text-sm">Thủ Đức, TP. Hồ Chí Minh</div>
+                      <div className="text-[9px] font-mono text-slate-500 uppercase font-bold tracking-widest">Base Location</div>
+                      <div className="font-bold text-sm">Thu Duc, Ho Chi Minh City, VN</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: Dynamic submission form */}
-              <div className={`lg:col-span-7 rounded-2xl border p-6 backdrop-blur-sm relative overflow-hidden ${isOcean ? 'bg-slate-900/20 border-slate-900' : 'bg-synth-900/20 border-synth-900'}`}>
+              <div className="lg:col-span-7 rounded-2xl border border-slate-900 bg-slate-900/20 p-6 backdrop-blur-sm relative overflow-hidden">
                 {formSubmitted ? (
-                  <div className="flex flex-col items-center justify-center py-10 text-center space-y-4 animate-fadeIn">
-                    <div className="w-14 h-14 bg-emerald-950 text-emerald-400 rounded-full flex items-center justify-center border border-emerald-500/30 animate-bounce">
+                  <div className="flex flex-col items-center justify-center py-10 text-center space-y-4">
+                    <div className="w-14 h-14 bg-emerald-950 text-emerald-400 rounded-full flex items-center justify-center border border-emerald-500/30">
                       <Icons.Check />
                     </div>
-                    <h3 className="text-lg font-black text-slate-100">Gửi Phản Hồi Thành Công!</h3>
+                    <h3 className="text-lg font-black text-slate-100">Message Dispatched!</h3>
                     <p className="text-slate-400 text-xs max-w-sm leading-relaxed">
-                      Cảm ơn quý nhà tuyển dụng đã gửi lời nhắn. Tôi sẽ trực tiếp liên lạc phản hồi qua địa chỉ Email trong thời gian sớm nhất!
+                      Thank you for contacting me. I will review the payload details and reach back to your return address coordinates shortly.
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleFormSubmit} className="space-y-4">
-                    <h3 className="text-base font-bold text-slate-200 uppercase tracking-wider font-mono">Gửi lời nhắn nhanh</h3>
+                    <h3 className="text-base font-bold text-slate-200 uppercase tracking-wider font-mono">Instant Messaging Gateway</h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1">
-                        <label className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">Tên / Quý công ty</label>
+                        <label className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">Your Identity / Company</label>
                         <input
                           type="text"
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          placeholder="Nguyễn Văn A"
+                          placeholder="John Doe"
                           className="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors"
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">Email liên hệ</label>
+                        <label className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">Return Address Email</label>
                         <input
                           type="email"
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          placeholder="hr@company.com"
+                          placeholder="talent@company.com"
                           className="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-1">
-                      <label className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">Lời nhắn nội dung</label>
+                      <label className="text-[10px] text-slate-400 font-mono uppercase tracking-widest">Message Payload Description</label>
                       <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         required
                         rows="4"
-                        placeholder="Xin chào Trần Nhựt Anh, chúng tôi đã xem hồ sơ năng lực của bạn..."
+                        placeholder="Hi Tran Nhut Anh, we reviewed your architecture portfolio models..."
                         className="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors"
                       ></textarea>
                     </div>
 
                     <button
                       type="submit"
-                      className={`w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center active:scale-95 ${themeBtn}`}
+                      className="w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-black"
                     >
                       <Icons.Send />
-                      Gửi Lời Nhắn Ngay
+                      Dispatch Message Payload
                     </button>
                   </form>
                 )}
@@ -1495,14 +1265,13 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
 
           </main>
 
-          {/* Footer bar */}
-          <footer className="bg-slate-950 border-t border-slate-900/60 py-8 relative z-10 text-center">
+          <footer className="bg-slate-950 border-t border-slate-900/60 py-8 text-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
               <p className="text-[11px] text-slate-500">
-                &copy; 2026 Trần Nhựt Anh. Thiết kế hồ sơ độc quyền hỗ trợ quy trình tuyển dụng nhân sự.
+                &copy; 2026 Tran Nhut Anh. Engineered uniquely to support automated corporate recruitment validation protocols.
               </p>
               <p className="text-[9px] text-slate-600 font-mono">
-                Kiến tạo bằng React 18, Tailwind CSS v3 &amp; Sự tối ưu tuyệt đối cho Backend &amp; Distributed Architectures.
+                Powered by React 18 & Tailwind CSS. Clean structures compiled flawlessly for Backend architectures.
               </p>
             </div>
           </footer>
@@ -1511,7 +1280,6 @@ Quý nhà tuyển dụng có thể liên hệ trực tiếp với tôi qua các 
       );
     }
 
-    // Render the App
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
